@@ -206,7 +206,7 @@ class Tropo extends BaseClass {
   * @see https://www.tropo.com/docs/webapi/on.htm
   */
   public function on($on) {
-    if (!is_object($on) && is_array($on))	{
+    if (!is_object($on) && is_array($on))  {
       $params = $on;
       if ((array_key_exists('say', $params) && ((array_key_exists('voice', $params) || isset($this->_voice))))){
         $v = isset($params["voice"]) ? $params["voice"] : $this->_voice;
@@ -1587,7 +1587,7 @@ class StartRecording extends BaseClass {
   * @param string $transcriptionEmailFormat
   * @param string $transcriptionOutURI
   */
-  public function __construct($format=NULL, $method=NULL, $password=NULL, $url=NULL, $username=NULL, $transcriptionID=NULL, $transcriptionEmailFormat=NULL, $transcriptionOutURI=NULL) {
+  public function __construct($format=NULL, $method=NULL, $password=NULL, $url=NULL, $username=NULL, $transcriptionID=NULL, $transcriptionEmailFormat=NULL, $transcriptionOutURI=NULL,$transcriptionLanguage=NULL) {
     $this->_format = $format;
     $this->_method = $method;
     $this->_password = $password;
@@ -1596,6 +1596,7 @@ class StartRecording extends BaseClass {
     $this->_transcriptionID = $transcriptionID;
     $this->_transcriptionEmailFormat = $transcriptionEmailFormat;
     $this->_transcriptionOutURI = $transcriptionOutURI;
+    $this->_transcriptionLanguage = $transcriptionLanguage;
   }
 
   /**
@@ -1611,6 +1612,7 @@ class StartRecording extends BaseClass {
     if(isset($this->_transcriptionID)) { $this->transcriptionID = $this->_transcriptionID; }
     if(isset($this->_transcriptionEmailFormat)) { $this->transcriptionEmailFormat = $this->_transcriptionEmailFormat; }
     if(isset($this->_transcriptionOutURI)) { $this->transcriptionOutURI = $this->_transcriptionOutURI; }
+    if(isset($this->_transcriptionLanguage)) { $this->transcriptionLanguage = $this->_transcriptionLanguage; }
     return $this->unescapeJSON(json_encode($this));
   }
 }
